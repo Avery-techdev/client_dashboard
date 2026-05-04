@@ -1,65 +1,220 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import Link from "next/link";
+import {
+  ActivityFeed,
+  MobileHeader,
+  ProjectCard,
+  ProjectsTable,
+  Sidebar,
+  StatCard,
+  activityItems,
+  featuredProjects,
+  statCards,
+  tableProjects,
+} from "@/features/overview";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Overview — Avery Studio",
+};
+
+function SearchIcon() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 15 15"
+      fill="none"
+      aria-hidden="true"
+    >
+      <circle
+        cx="6.5"
+        cy="6.5"
+        r="5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+      <path
+        d="M12 12l-2-2"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function BellIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M7 14a2 2 0 0 0 4 0"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M3.5 12V8a4.5 4.5 0 1 1 9 0v4l1.5.75V13H2v-.25L3.5 12z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function ArrowRightIcon() {
+  return (
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 15 15"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M2.5 7.5h10M8.5 3.5l4 4-4 4"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export default function OverviewPage() {
+  return (
+    <div className="flex h-full overflow-hidden bg-surface-base">
+      {/* Desktop sidebar */}
+      <Sidebar />
+
+      {/* Content column */}
+      <div className="flex flex-1 flex-col overflow-hidden">
+        {/* Mobile header — Client Component for hamburger toggle */}
+        <MobileHeader />
+
+        {/* Desktop top bar */}
+        <div className="hidden items-center justify-between border-b border-border-subtle bg-surface-sidebar px-8 py-4 md:flex">
+          <div>
+            <p className="text-xl font-semibold text-text-primary">
+              Overview
+            </p>
+            <p className="text-xs text-text-muted">
+              Client Dashboard
+            </p>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="relative">
+              <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-text-muted">
+                <SearchIcon />
+              </span>
+              <input
+                type="search"
+                placeholder="Search projects..."
+                className="h-9 w-56 rounded-lg border border-border-subtle bg-surface-input pl-9 pr-4 text-sm text-text-primary placeholder:text-text-muted focus:border-brand-accent focus:outline-none focus:ring-1 focus:ring-brand-accent"
+                aria-label="Projekte suchen"
+              />
+            </div>
+            <button
+              type="button"
+              aria-label="Benachrichtigungen"
+              className="relative flex h-9 w-9 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors hover:border-brand-accent hover:text-brand-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              <BellIcon />
+              <span
+                className="absolute right-2 top-2 h-1.5 w-1.5 rounded-full bg-brand-accent"
+                aria-label="Neue Benachrichtigungen vorhanden"
+              />
+            </button>
+          </div>
+        </div>
+
+        {/* Main scrollable content */}
+        <main
+          id="main-content"
+          className="flex-1 overflow-y-auto"
+          aria-label="Dashboard Übersicht"
+        >
+          <div className="px-4 py-6 md:px-8">
+            {/* Hero */}
+            <div className="mb-8 flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
+              <div>
+                <h1 className="text-2xl font-bold text-text-primary md:text-3xl">
+                  Good morning, Avery.
+                </h1>
+                <p className="mt-1.5 text-sm text-text-secondary">
+                  Here&apos;s what&apos;s happening with
+                  your projects today.
+                </p>
+              </div>
+              <div className="w-full lg:w-72 lg:shrink-0">
+                <ActivityFeed items={activityItems} />
+              </div>
+            </div>
+
+            {/* Stats */}
+            <section aria-label="Projektstatistiken">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                {statCards.map((stat) => (
+                  <StatCard key={stat.id} data={stat} />
+                ))}
+              </div>
+            </section>
+
+            {/* Recent Projects */}
+            <section
+              className="mt-8"
+              aria-labelledby="recent-projects-heading"
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+              <div className="mb-4 flex items-center justify-between">
+                <h2
+                  id="recent-projects-heading"
+                  className="text-base font-semibold text-text-primary"
+                >
+                  Recent Projects
+                </h2>
+                <Link
+                  href="/projects"
+                  className="flex items-center gap-1.5 text-sm text-brand-accent transition-opacity hover:opacity-80"
+                >
+                  View all projects
+                  <ArrowRightIcon />
+                </Link>
+              </div>
+
+              {/* Featured cards */}
+              <div className="mb-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+                {featuredProjects.map((project) => (
+                  <ProjectCard
+                    key={project.id}
+                    project={project}
+                  />
+                ))}
+              </div>
+
+              {/* Projects table */}
+              <ProjectsTable projects={tableProjects} />
+
+              {/* Footer link */}
+              <div className="mt-5 flex justify-center">
+                <Link
+                  href="/projects"
+                  className="flex items-center gap-2 text-sm text-brand-accent transition-opacity hover:opacity-80"
+                >
+                  View all projects
+                  <ArrowRightIcon />
+                </Link>
+              </div>
+            </section>
+          </div>
+        </main>
+      </div>
     </div>
   );
 }
