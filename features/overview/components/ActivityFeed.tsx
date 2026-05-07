@@ -101,7 +101,7 @@ const IconMap = {
 
 export function ActivityFeed({ items }: ActivityFeedProps) {
   return (
-    <div className="rounded-xl border border-border-subtle bg-surface-card p-4">
+    <div className="rounded-xl border border-border-subtle p-4">
       <h2 className="mb-3 text-sm font-semibold text-text-primary">
         Today at a glance
       </h2>

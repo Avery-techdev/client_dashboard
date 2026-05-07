@@ -75,17 +75,11 @@ const initialsStyles: Record<AccentColor, string> = {
   orange: "bg-chart-orange/20 text-chart-orange",
 };
 
-const previewGradients: Record<AccentColor, string> = {
-  teal: "from-chart-teal/20 to-chart-teal/5",
-  purple: "from-chart-purple/20 to-chart-purple/5",
-  orange: "from-chart-orange/20 to-chart-orange/5",
-};
-
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="flex flex-col overflow-hidden rounded-xl border border-border-subtle bg-surface-card">
+    <article className="flex flex-col overflow-hidden rounded-xl bg-surface-card">
       {/* Header */}
-      <div className="flex items-start justify-between gap-3 p-5">
+      <div className="flex items-start justify-between gap-3 p-4">
         <div className="flex items-center gap-3">
           <div
             className={cn(
@@ -122,25 +116,22 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </span>
       </div>
 
-      {/* Preview area */}
+      {/* Preview area — neutral placeholder */}
       <div
-        className={cn(
-          "mx-5 h-28 rounded-lg bg-linear-to-br",
-          previewGradients[project.accentColor],
-        )}
+        className="mx-4 h-14 rounded-lg bg-surface-card-hover"
         role="img"
         aria-label={`Vorschau für ${project.name}`}
       />
 
       {/* Description */}
       {project.description && (
-        <p className="px-5 pt-4 text-sm leading-relaxed text-text-secondary">
+        <p className="px-4 pt-3 text-sm leading-relaxed text-text-secondary">
           {project.description}
         </p>
       )}
 
       {/* Footer */}
-      <div className="flex items-center justify-between px-5 py-4">
+      <div className="flex items-center justify-between px-4 py-3">
         <div className="flex items-center gap-1.5 text-xs text-text-muted">
           <CalendarSmallIcon />
           <span>Updated {project.updatedAt}</span>

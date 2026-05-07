@@ -1,8 +1,10 @@
 export type TrendDirection = "up" | "down";
 
-export type ChartColor = "teal" | "purple" | "orange";
-
+/** Einheitliche Farbpalette für Charts und Projekt-Akzente */
 export type AccentColor = "teal" | "purple" | "orange";
+
+/** Alias — Chart-Sparklines verwenden dieselbe Farbpalette */
+export type ChartColor = AccentColor;
 
 export type ActivityItemType =
   | "update"

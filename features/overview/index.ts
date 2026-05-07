@@ -10,6 +10,8 @@ export {
   featuredProjects,
   tableProjects,
 } from "./mock-data";
+export { navItems } from "./constants";
+export type { NavIconType } from "./constants";
 export type {
   StatCardData,
   ActivityItem,

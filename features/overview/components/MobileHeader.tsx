@@ -4,6 +4,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { navItems } from "../constants";
 
 function MenuOpenIcon() {
   return (
@@ -136,20 +137,10 @@ function ProjectsIcon() {
   );
 }
 
-const navItems = [
-  {
-    href: "/",
-    label: "Overview",
-    Icon: OverviewIcon,
-    isActive: true,
-  },
-  {
-    href: "/projects",
-    label: "Projects",
-    Icon: ProjectsIcon,
-    isActive: false,
-  },
-] as const;
+const IconMap = {
+  overview: OverviewIcon,
+  projects: ProjectsIcon,
+} as const;
 
 export function MobileHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -248,26 +239,29 @@ export function MobileHeader() {
               className="flex flex-col gap-1 p-3"
             >
               {navItems.map(
-                ({ href, label, Icon, isActive }) => (
-                  <li key={href}>
-                    <Link
-                      href={href}
-                      onClick={() => setIsMenuOpen(false)}
-                      aria-current={
-                        isActive ? "page" : undefined
-                      }
-                      className={cn(
-                        "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors",
-                        isActive
-                          ? "bg-brand-accent/10 font-medium text-brand-accent"
-                          : "text-text-secondary hover:bg-surface-card hover:text-text-primary",
-                      )}
-                    >
-                      <Icon />
-                      {label}
-                    </Link>
-                  </li>
-                ),
+                ({ href, label, iconType, isActive }) => {
+                  const Icon = IconMap[iconType];
+                  return (
+                    <li key={href}>
+                      <Link
+                        href={href}
+                        onClick={() => setIsMenuOpen(false)}
+                        aria-current={
+                          isActive ? "page" : undefined
+                        }
+                        className={cn(
+                          "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors",
+                          isActive
+                            ? "bg-brand-accent/10 font-medium text-brand-accent"
+                            : "text-text-secondary hover:bg-surface-card hover:text-text-primary",
+                        )}
+                      >
+                        <Icon />
+                        {label}
+                      </Link>
+                    </li>
+                  );
+                },
               )}
             </ul>
           </nav>

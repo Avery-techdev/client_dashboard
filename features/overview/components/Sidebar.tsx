@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { navItems } from "../constants";
 
 function OverviewIcon() {
   return (
@@ -115,29 +116,19 @@ function ExternalLinkIcon() {
   );
 }
 
-const navItems = [
-  {
-    href: "/",
-    label: "Overview",
-    Icon: OverviewIcon,
-    isActive: true,
-  },
-  {
-    href: "/projects",
-    label: "Projects",
-    Icon: ProjectsIcon,
-    isActive: false,
-  },
-] as const;
+const IconMap = {
+  overview: OverviewIcon,
+  projects: ProjectsIcon,
+} as const;
 
 export function Sidebar() {
   return (
     <aside
-      className="hidden w-52 shrink-0 flex-col border-r border-border-subtle bg-surface-sidebar md:flex"
+      className="hidden w-[270px] shrink-0 flex-col border-r border-border-subtle bg-surface-sidebar md:flex"
       aria-label="Main navigation"
     >
       {/* Logo */}
-      <div className="flex h-16 items-center gap-2.5 border-b border-border-subtle px-5">
+      <div className="flex h-[72px] items-center gap-2 border-b border-border-subtle px-5">
         <span className="text-sm font-semibold tracking-wide text-text-primary">
           AVERY STUDIO
         </span>
@@ -149,30 +140,33 @@ export function Sidebar() {
 
       {/* Navigation */}
       <nav
-        className="flex-1 overflow-y-auto px-3 py-4"
+        className="flex-1 overflow-y-auto px-2 py-3"
         aria-label="Dashboard"
       >
         <ul role="list" className="flex flex-col gap-1">
           {navItems.map(
-            ({ href, label, Icon, isActive }) => (
-              <li key={href}>
-                <Link
-                  href={href}
-                  aria-current={
-                    isActive ? "page" : undefined
-                  }
-                  className={cn(
-                    "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors",
-                    isActive
-                      ? "bg-brand-accent/10 font-medium text-brand-accent"
-                      : "text-text-secondary hover:bg-surface-card-hover hover:text-text-primary",
-                  )}
-                >
-                  <Icon />
-                  {label}
-                </Link>
-              </li>
-            ),
+            ({ href, label, iconType, isActive }) => {
+              const Icon = IconMap[iconType];
+              return (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    aria-current={
+                      isActive ? "page" : undefined
+                    }
+                    className={cn(
+                      "flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm transition-colors",
+                      isActive
+                        ? "bg-brand-accent/10 font-medium text-brand-accent"
+                        : "text-text-secondary hover:bg-surface-card-hover hover:text-text-primary",
+                    )}
+                  >
+                    <Icon />
+                    {label}
+                  </Link>
+                </li>
+              );
+            },
           )}
         </ul>
       </nav>
@@ -181,7 +175,7 @@ export function Sidebar() {
       <div className="border-t border-border-subtle">
         <button
           type="button"
-          className="flex w-full items-center gap-3 px-4 py-3.5 text-left transition-colors hover:bg-surface-card-hover"
+          className="flex w-full items-center gap-2.5 px-3 py-3 text-left transition-colors hover:bg-surface-card-hover"
           aria-label="User menu for Avery"
         >
           <div
@@ -201,7 +195,7 @@ export function Sidebar() {
           <ChevronDownIcon />
         </button>
 
-        <div className="px-4 pb-4">
+        <div className="px-3 pb-3">
           <p className="mb-0.5 text-xs text-text-muted">
             Need help?
           </p>

@@ -79,35 +79,35 @@ export function ProjectsTable({
   projects,
 }: ProjectsTableProps) {
   return (
-    <div className="overflow-hidden rounded-xl border border-border-subtle bg-surface-card">
+    <div className="overflow-hidden rounded-xl bg-surface-card">
       <table className="w-full">
         <thead className="border-b border-border-subtle">
           <tr>
             <th
               scope="col"
-              className="px-5 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-muted"
+              className="px-4 py-2.5 text-left text-xs font-medium uppercase tracking-wider text-text-muted"
             >
               Project
             </th>
             <th
               scope="col"
-              className="hidden px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-muted md:table-cell"
+              className="hidden px-4 py-2.5 text-left text-xs font-medium uppercase tracking-wider text-text-muted md:table-cell"
             >
               Client
             </th>
             <th
               scope="col"
-              className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-muted"
+              className="px-4 py-2.5 text-left text-xs font-medium uppercase tracking-wider text-text-muted"
             >
               Status
             </th>
             <th
               scope="col"
-              className="hidden px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-muted lg:table-cell"
+              className="hidden px-4 py-2.5 text-left text-xs font-medium uppercase tracking-wider text-text-muted lg:table-cell"
             >
               Last Updated
             </th>
-            <th scope="col" className="px-4 py-3">
+            <th scope="col" className="px-4 py-2.5">
               <span className="sr-only">Details</span>
             </th>
           </tr>
@@ -119,7 +119,7 @@ export function ProjectsTable({
               className="transition-colors hover:bg-surface-card-hover"
             >
               {/* Project */}
-              <td className="px-5 py-4">
+              <td className="px-4 py-2">
                 <div className="flex items-center gap-3">
                   <div
                     className={cn(
@@ -142,12 +142,12 @@ export function ProjectsTable({
               </td>
 
               {/* Client */}
-              <td className="hidden px-4 py-4 text-sm text-text-secondary md:table-cell">
+              <td className="hidden px-4 py-2 text-sm text-text-secondary md:table-cell">
                 {project.client}
               </td>
 
               {/* Status */}
-              <td className="px-4 py-4">
+              <td className="px-4 py-2">
                 <span
                   className={cn(
                     "inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium",
@@ -165,7 +165,7 @@ export function ProjectsTable({
               </td>
 
               {/* Last Updated */}
-              <td className="hidden px-4 py-4 lg:table-cell">
+              <td className="hidden px-4 py-2 lg:table-cell">
                 <div className="flex items-center gap-1.5 text-xs text-text-secondary">
                   <CalendarSmallIcon />
                   <span>{project.updatedAt}</span>
@@ -173,7 +173,7 @@ export function ProjectsTable({
               </td>
 
               {/* Action */}
-              <td className="px-4 py-4">
+              <td className="px-4 py-2">
                 <button
                   type="button"
                   aria-label={`${project.name} Details anzeigen`}

@@ -152,12 +152,12 @@ export function StatCard({ data }: StatCardProps) {
   const isUp = data.trend.direction === "up";
 
   return (
-    <article className="flex flex-col rounded-xl border border-border-subtle bg-surface-card p-5">
+    <article className="flex flex-col rounded-xl bg-surface-card p-3.5">
       <div className="flex items-start justify-between gap-4">
         <div className="flex flex-col">
           <div
             className={cn(
-              "mb-3 flex h-10 w-10 items-center justify-center rounded-lg",
+              "mb-2 flex h-8 w-8 items-center justify-center rounded-lg",
               iconWrapperStyles[data.icon],
             )}
           >
@@ -166,7 +166,7 @@ export function StatCard({ data }: StatCardProps) {
           <p className="text-sm text-text-secondary">
             {data.label}
           </p>
-          <p className="mt-1 text-3xl font-bold tabular-nums text-text-primary">
+          <p className="mt-0.5 text-xl font-bold tabular-nums text-text-primary">
             {data.value}
           </p>
         </div>
@@ -181,7 +181,7 @@ export function StatCard({ data }: StatCardProps) {
 
       <div
         className={cn(
-          "mt-3 flex items-center gap-1 text-xs",
+          "mt-2 flex items-center gap-1 text-xs",
           isUp ? "text-status-green" : "text-status-orange",
         )}
         aria-label={`${isUp ? "+" : "-"}${data.trend.delta} ${data.trend.label}`}
