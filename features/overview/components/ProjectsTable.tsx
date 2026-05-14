@@ -4,62 +4,13 @@ import type {
   ProjectStatus,
 } from "../types";
 import { cn } from "@/lib/utils";
+import {
+  ArrowRightIcon,
+  CalendarSmallIcon,
+} from "@/components/icons";
 
 interface ProjectsTableProps {
   projects: ProjectData[];
-}
-
-function ArrowRightIcon() {
-  return (
-    <svg
-      width="15"
-      height="15"
-      viewBox="0 0 15 15"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M2.5 7.5h10M8.5 3.5l4 4-4 4"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function CalendarSmallIcon() {
-  return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 12 12"
-      fill="none"
-      aria-hidden="true"
-    >
-      <rect
-        x="1"
-        y="2"
-        width="10"
-        height="9"
-        rx="1.5"
-        stroke="currentColor"
-        strokeWidth="1.25"
-      />
-      <path
-        d="M1 5h10"
-        stroke="currentColor"
-        strokeWidth="1.25"
-      />
-      <path
-        d="M4 1v2M8 1v2"
-        stroke="currentColor"
-        strokeWidth="1.25"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
 }
 
 // Full class strings for Tailwind scanning

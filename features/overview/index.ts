@@ -5,6 +5,11 @@ export { ActivityFeed } from "./components/ActivityFeed";
 export { ProjectCard } from "./components/ProjectCard";
 export { ProjectsTable } from "./components/ProjectsTable";
 export {
+  ArrowRightIcon,
+  BellIcon,
+  SearchIcon,
+} from "@/components/icons";
+export {
   statCards,
   activityItems,
   featuredProjects,
