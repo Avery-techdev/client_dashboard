@@ -23,8 +23,8 @@ export const metadata: Metadata = {
 export default function OverviewPage() {
   return (
     <div className="flex min-h-screen items-start justify-center bg-surface-base px-4 py-3">
-      {/* App shell — zentrierter Container, max 1440px, geschlossene Fläche */}
-      <div className="flex w-full max-w-360 min-h-[calc(100vh-24px)] overflow-hidden rounded-[20px] border border-border-subtle">
+      {/* App shell — zentrierter Container, geschlossene Fläche */}
+      <div className="flex w-full max-w-6xl min-h-[calc(100vh-24px)] overflow-hidden rounded-5 border border-border-subtle">
         {/* Desktop sidebar */}
         <Sidebar />
 
@@ -54,6 +54,7 @@ export default function OverviewPage() {
                     placeholder="Search projects..."
                     className="h-9 w-56 rounded-lg border border-border-subtle bg-surface-input pl-9 pr-4 text-sm text-text-primary placeholder:text-text-muted focus:border-brand-accent focus:outline-none focus:ring-1 focus:ring-brand-accent"
                     aria-label="Projekte suchen"
+                    suppressHydrationWarning
                   />
                 </div>
               </form>
@@ -77,7 +78,7 @@ export default function OverviewPage() {
             className="flex-1 overflow-y-auto bg-surface-content"
             aria-label="Dashboard Übersicht"
           >
-            <div className="mx-auto w-full max-w-7xl px-6 py-6">
+            <div className="mx-auto w-full px-6 py-6">
               {/* Hero — 2-Spalten: Greeting links ~60%, ActivityFeed rechts ~40% */}
               <div className="mb-4 grid grid-cols-1 items-start gap-4 lg:grid-cols-[3fr_2fr]">
                 <div>
