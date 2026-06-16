@@ -28,7 +28,7 @@ const initialsStyles: Record<AccentColor, string> = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="flex flex-col overflow-hidden rounded-xl bg-surface-card">
+    <article className="flex flex-col overflow-hidden rounded-xl border border-border-subtle bg-surface-card">
       {/* Header */}
       <div className="flex items-start justify-between gap-3 p-4">
         <div className="flex items-center gap-3">

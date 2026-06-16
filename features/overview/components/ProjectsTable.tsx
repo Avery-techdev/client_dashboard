@@ -30,7 +30,7 @@ export function ProjectsTable({
   projects,
 }: ProjectsTableProps) {
   return (
-    <div className="overflow-hidden rounded-xl bg-surface-card">
+    <div className="overflow-hidden">
       <table className="w-full">
         <thead className="border-b border-border-subtle">
           <tr>

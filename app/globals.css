@@ -9,10 +9,10 @@
   /* Surfaces */
   --color-surface-base: #0b0f12;
   --color-surface-sidebar: #02060a;
-  --color-surface-content: #0b0f12;
-  --color-surface-card: #10161c;
+  --color-surface-content: #0f131a;
+  --color-surface-card: #0f1317;
   --color-surface-card-hover: #151515;
-  --color-surface-input: #10161c;
+  --color-surface-input: #0f1317;
 
   /* Borders */
   --color-border-subtle: rgba(255, 255, 255, 0.08);
